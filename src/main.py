@@ -32,4 +32,9 @@ def vectorize(img_path):
 
     img_vec = np.concatenate((norm_red, norm_green, norm_blue)) * 100
 
-    return img_vec
+    return img_vec.tolist()
+
+img_vector = vectorize(test_path)
+query_response = index.query(top_k = 1, vector = img_vector)
+
+print(query_response)
