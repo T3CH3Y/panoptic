@@ -10,7 +10,7 @@ pinecone.init(
 
 index = pinecone.Index(config["pinecone"]["index"])
 
-test_path = "photos/Hieronymus_Bosch_14.jpg"
+test_path = "verification/bosch_vandal_2.jpg"
 
 def vectorize(img_path):
 
@@ -37,4 +37,8 @@ def vectorize(img_path):
 img_vector = vectorize(test_path)
 query_response = index.query(top_k = 1, vector = img_vector)
 
-print(query_response)
+result = query_response["matches"][0]
+score = result["score"]
+predicted_id = result["id"]
+
+print(f"Sample predicted to be {predicted_id} with {score}% confidence.")
