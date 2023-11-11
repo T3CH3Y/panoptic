@@ -1,3 +1,11 @@
 import os
 
-PINECONE_API_KEY = os.environ["PINECONE_API"]
+config = {
+
+    "pinecone" : {
+        "api_key" : os.environ["PINECONE_API"],
+        "environment" : "gcp-starter",
+        "index" : "image-stuff"
+        }
+}
+
